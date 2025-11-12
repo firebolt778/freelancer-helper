@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Freelancer Helper",
+  "version": "1.0.0",
+  "description": "Display freelancer information from API",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.freelancer.com/projects/*"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Freelancer Helper"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
