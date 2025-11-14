@@ -69,14 +69,9 @@ function renderUserInfo(userData) {
     ? `https:${user.avatar_xlarge_cdn}`
     : user.avatar_xlarge_cdn;
 
-  const currentTime = getCurrentTimeInTimezone(
-    user.timezone.timezone,
-    user.timezone.offset
-  );
-
   const registeredDate = formatDate(user.registration_date);
 
-  const location = `${user.location.city}, ${user.location.country.name}`;
+  const location = user.location ? `${user.location.city}, ${user.location.country.name}` : 'N/A';
 
   const preferredBadge = user.preferred_freelancer
     ? '<span class="badge preferred">⭐ Preferred Freelancer</span>'
@@ -122,10 +117,15 @@ function renderUserInfo(userData) {
       <div class="info-value">${location}</div>
     </div>
     
-    <div class="info-section">
-      <div class="info-label">Current Time</div>
-      <div class="info-value">${currentTime} (${user.timezone.timezone})</div>
-    </div>
+    ${user.timezone && user.timezone.timezone
+      ? `
+        <div class="info-section">
+          <div class="info-label">Timezone</div>
+          <div class="info-value">${user.timezone.timezone}</div>
+        </div>
+      `
+      : ''
+    }
     
     <div class="info-section">
       <div class="info-label">Registered</div>
